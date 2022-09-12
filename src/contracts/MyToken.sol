@@ -12,8 +12,9 @@ contract MyToken is IERC20, IERC20Metadata {
     uint256 private _totalSupply;
 
     string private _name;
-    string private _symbol;
     address private _owner;
+
+    // TODO: Complete here
 
     /**
      * @dev Sets the values for {name} and {symbol}.
@@ -26,9 +27,10 @@ contract MyToken is IERC20, IERC20Metadata {
      */
     constructor(string memory name_, string memory symbol_) {
         _name = name_;
-        _symbol = symbol_;
         _owner = msg.sender;
         _mint(msg.sender, 1000000);
+
+        // TODO: Complete here
     }
 
     /**
@@ -43,7 +45,8 @@ contract MyToken is IERC20, IERC20Metadata {
      * name.
      */
     function symbol() public view virtual override returns (string memory) {
-        return _symbol;
+        // TODO: Complete here
+        return "";
     }
 
     /**
@@ -80,7 +83,8 @@ contract MyToken is IERC20, IERC20Metadata {
         override
         returns (uint256)
     {
-        return _balances[account];
+        // TODO: Complete here
+        return 0;
     }
 
     /**
@@ -97,8 +101,7 @@ contract MyToken is IERC20, IERC20Metadata {
         override
         returns (bool)
     {
-        address owner = msg.sender;
-        _transfer(owner, to, amount);
+        // TODO: Complete here
         return true;
     }
 
@@ -112,7 +115,8 @@ contract MyToken is IERC20, IERC20Metadata {
         override
         returns (uint256)
     {
-        return _allowances[owner][spender];
+        // TODO: Complete here
+        return 0;
     }
 
     /**
@@ -131,8 +135,7 @@ contract MyToken is IERC20, IERC20Metadata {
         override
         returns (bool)
     {
-        address owner = msg.sender;
-        _approve(owner, spender, amount);
+        // TODO: Complete here
         return true;
     }
 
@@ -157,9 +160,7 @@ contract MyToken is IERC20, IERC20Metadata {
         address to,
         uint256 amount
     ) public virtual override returns (bool) {
-        address spender = msg.sender;
-        _spendAllowance(from, spender, amount);
-        _transfer(from, to, amount);
+        // TODO: Complete here
         return true;
     }
 
@@ -180,8 +181,7 @@ contract MyToken is IERC20, IERC20Metadata {
         virtual
         returns (bool)
     {
-        address owner = msg.sender;
-        _approve(owner, spender, allowance(owner, spender) + addedValue);
+        // TODO: Complete here
         return true;
     }
 
@@ -236,26 +236,8 @@ contract MyToken is IERC20, IERC20Metadata {
         address to,
         uint256 amount
     ) internal virtual {
-        require(from != address(0), "ERC20: transfer from the zero address");
-        require(to != address(0), "ERC20: transfer to the zero address");
-
-        _beforeTokenTransfer(from, to, amount);
-
-        uint256 fromBalance = _balances[from];
-        require(
-            fromBalance >= amount,
-            "ERC20: transfer amount exceeds balance"
-        );
-        unchecked {
-            _balances[from] = fromBalance - amount;
-            // Overflow not possible: the sum of all balances is capped by totalSupply, and the sum is preserved by
-            // decrementing then incrementing.
-            _balances[to] += amount;
-        }
-
+        // TODO: Complete here
         emit Transfer(from, to, amount);
-
-        _afterTokenTransfer(from, to, amount);
     }
 
     /** @dev Creates `amount` tokens and assigns them to `account`, increasing
@@ -329,10 +311,7 @@ contract MyToken is IERC20, IERC20Metadata {
         address spender,
         uint256 amount
     ) internal virtual {
-        require(owner != address(0), "ERC20: approve from the zero address");
-        require(spender != address(0), "ERC20: approve to the zero address");
-
-        _allowances[owner][spender] = amount;
+        // TODO: Complete here
         emit Approval(owner, spender, amount);
     }
 
